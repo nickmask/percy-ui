@@ -11,7 +11,9 @@ class LoginForm extends Component {
       password: ""
     },
     loading: false,
-    errors: {}
+    errors: {
+      global: ""
+    }
   };
 
   onChange = e =>
@@ -24,11 +26,10 @@ class LoginForm extends Component {
     this.setState({ errors });
     if (Object.keys(errors).length === 0) {
       this.setState({ loading: true });
-      this.props
-        .submit(this.state.data)
-        .catch(err =>
-          this.setState({ errors: err.response.data.errors, loading: false })
-        );
+      this.props.submit(this.state.data);
+      // .catch(err =>
+      //   this.setState({ errors: err.response.data.errors, loading: false })
+      // );
     }
   };
 
