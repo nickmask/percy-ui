@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import thunk from "redux-thunk";
+import decode from "jwt-decode";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route } from "react-router-dom";
@@ -21,7 +22,12 @@ const store = createStore(
 
 // TODO: Expire the token on the server side as well
 if (localStorage.percyJWT) {
-  const user = { token: localStorage.percyJWT };
+  const payload = decode(localStorage.percyJWT);
+  const user = {
+    token: localStorage.percyJWT,
+    email: payload.email,
+    confirmed: payload.confirmed
+  };
   store.dispatch(userLoggedIn(user));
 }
 
