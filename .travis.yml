@@ -12,10 +12,11 @@ deploy:
   secret_access_key: $AWS_SECRET_KEY
   local_dir: dpl_cd_upload
   skip_cleanup: true
-  on: &2
+  on:
     repo: nickmask/percy-ui
   bucket: percy-ui
   region: us-east-2
+
 - provider: codedeploy
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
