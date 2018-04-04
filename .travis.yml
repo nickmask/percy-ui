@@ -24,7 +24,7 @@ deploy:
   key: latest.zip
   bundle_type: zip
   application: PercyUi
-  deployment_group: PercyUiCodeDeploy
+  deployment_group: percy-ui-dg
   region: ap-southeast-2
   on: *2
 script:
