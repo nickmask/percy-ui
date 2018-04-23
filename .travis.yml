@@ -27,7 +27,15 @@ deploy:
   deployment_group: percy-ui-dg
   region: ap-southeast-2
   on: *2
-script:
-  - zip -r latest * >/dev/null
-  - mkdir -p dpl_cd_upload
-  - mv latest.zip dpl_cd_upload/latest.zip
+script: # these run duing the travis build
+  - zip -r latest * >/dev/null # Zip our project into "lastest"
+  - mkdir -p dpl_cd_upload # make directory and ignore errors if it exists 
+  - mv latest.zip dpl_cd_upload/latest.zip # move latest.zip into that directory
+
+  # the appspec.yml file will tell AWS where we want to put our project on the EC2 instance.
+  
+after_deploy:
+  # I think run the scripts I want to setup 
+  # Should I point to a shell script to run?
+  - sudo apt-get update # Update machine
+  - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - sudo apt-get install -y nodejs # install node and npm
