@@ -34,8 +34,8 @@ script: # these run duing the travis build
 
   # the appspec.yml file will tell AWS where we want to put our project on the EC2 instance.
   
-after_deploy:
-  # I think run the scripts I want to setup 
-  # Should I point to a shell script to run?
-  - sudo apt-get update # Update machine
-  - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - sudo apt-get install -y nodejs # install node and npm
+# after_deploy:
+#   # I think run the scripts I want to setup 
+#   # Should I point to a shell script to run?
+#   - sudo apt-get update # Update machine
+#   - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - sudo apt-get install -y nodejs # install node and npm
