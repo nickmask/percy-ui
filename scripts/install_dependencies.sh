@@ -4,3 +4,4 @@ nvm install --lts
 
 cd ~/percy-ui
 npm install
+npm build
